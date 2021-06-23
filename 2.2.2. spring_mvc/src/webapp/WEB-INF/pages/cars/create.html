@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru_RU">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link href="../css/style.css" th:href="@{/css/style.css.css}" rel="stylesheet" />
+    <style>
+        body html{
+            margin: auto;
+        }
+       
+        #container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: snow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "PT Sans", serif;
+        }
+        div#form{
+            background-color: seashell;
+            position: fixed;
+            min-height: 550px;
+            min-width: 600px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+            padding-left: 12%;
+
+
+        }
+        input.in {
+            display: grid;
+            align-items: inherit;
+            margin-bottom: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            min-width: 335px;
+            padding: 15px;
+        }
+        input.in:hover {
+            border: 1px solid #c2c2c2;
+            box-shadow: cadetblue;
+        }
+        input.nav {
+            display: table-row-group;
+            border: none;
+            background-color: tomato;
+            font-family: "PT Sans", serif;
+            min-width: 100px;
+            min-height: 40px;
+            color: snow;
+            margin-left: 80px;
+        }
+        input#create-button{
+            position: fixed;
+            margin-left: 190px;
+        }
+        input.nav:hover {
+            border: none;
+            background-color: lightsalmon;
+            font-family: "PT Sans", serif;
+            color: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+    <div id="form">
+        <form th:method="POST" th:action="@{/cars}" th:object="${create}">
+            <h1 th:headers="${create}">REGISTRATION NEW AUTO</h1>
+            <b><h3 th:text="'Введите данные для нового автомобиля'"></h3></b>
+            <label for="mark">Марка</label>
+                <input class="in" type="text" th:field = "*{model}" id="mark" /><br/>
+
+            <label for="color">Цвет</label>
+                <input class="in" type="text" th:field = "*{color}" id="color" /><br/>
+
+            <label for="vin">VIN номер</label>
+                <input class="in" type="text" th:field = "*{vin}" id="vin" /><br/>
+
+            <br/>
+            <input class="nav" type="submit" value="ДОБАВИТЬ" id="create-button"/>
+        </form>
+        <form id = "create" th:action = "@{./cars}"  method="GET">
+            <input class="nav" type="submit" th:method="GET" value="НАЗАД"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

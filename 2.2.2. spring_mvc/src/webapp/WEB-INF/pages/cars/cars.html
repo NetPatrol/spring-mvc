@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="ru_RU">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+    <link href="../css/style.css" th:href="@{/css/style.css.css}" rel="stylesheet" />
+    <style>
+        body html{
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        #container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: snow;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "PT Sans", serif;
+        }
+        table {
+            box-shadow: sienna;
+            font-family: "PT Sans", serif;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-left: none;
+            border-right: none;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            align-content: center;
+        }
+        th, td {
+            text-align: justify-all;
+            border-collapse: collapse;
+            border-bottom: 1px solid #ddd;
+            padding-left: 10px;
+            padding-right: 10px;
+            height: 70px;
+            width: 130px;
+        }
+        tr.head-tr {
+            box-shadow: rgba(0, 0, 0, 0.1) 0 20px 25px -5px, rgba(0, 0, 0, 0.04) 0 10px 10px -5px;
+            font-family: "PT Sans",serif;
+            color: snow;
+            background-color: sienna;
+            text-align: center;
+            border-top-right-radius: 5px;
+            border-top-left-radius: 5px;
+        }
+        tr.body-tr:hover {background-color: #ccc;
+            box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;}
+        input.in {
+            align-items: inherit;
+            margin: 10px;
+            border: 1px solid #ccc;
+            width: 160px;
+            height: 35px;
+        }
+        input.in:hover {
+            border: 1px solid #c2c2c2;
+            box-shadow: cadetblue;
+
+        }
+        input.nav {
+            border: none;
+            background-color: tomato;
+            font-family: "PT Sans", serif;
+            min-width: 100px;
+            min-height: 40px;
+            color: snow;
+        }
+        input.nav:hover {
+            border: none;
+            background-color: lightsalmon;
+            font-family: "PT Sans", serif;
+            color: #cccccc;
+        }
+    </style>
+</head>
+
+<body>
+<div id="container">
+<div>
+    <div>
+        <h1 th:headers="${cars}">Список автомобилей</h1>
+        <b><p th:text="'Показано автомобилей: ' + ${cars.size()}"></p></b>
+        <form th:method="GET" th:action="@{cars}">
+            <label>Введите количество строк
+                <input type="text" name="count" class="in" />
+            </label>
+            <input value="ПОКАЗАТЬ" class="nav" type="submit" id="create-button"/>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr class="head-tr">
+                <td><b><span th:text="'MARK'">MARK</span></b></td>
+                <td><b><span th:text="'COLOR'">COLOR</span></b></td>
+                <td><b><span th:text="'VIN NUMBER'">VIN NUMBER</span></b></td>
+            </tr>
+            <tr class="body-tr" th:each="car, itemStat : ${cars}">
+                <td><span th:text="${car.getModel()}">Model</span></td>
+                <td><span th:text="${car.getColor()}">Color</span></td>
+                <td><span th:text="${car.getVin()}">VIN number</span></td>
+            </tr>
+            <tr class="body-tr" th:if="${cars.isEmpty()}" >
+                <td colspan="3">No cars available</td>
+            </tr>
+        </thead>
+    </table>
+            <br/>
+    <form id = "create" th:action = "@{./create}"  method="GET">
+        <input class="nav" type="submit" th:method="GET" value="ДОБАВИТЬ"/>
+    </form>
+
+</div>
+</div>
+</body>
+</html>
