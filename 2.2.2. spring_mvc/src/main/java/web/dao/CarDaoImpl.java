@@ -1,13 +1,13 @@
 package web.dao;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Repository
 public class CarDaoImpl implements CarDao {
     private static int COUNT = 0;
     private static final List<Car> cars;
@@ -24,17 +24,17 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public List<Car> index() {
+    public List<Car> listAllCar() {
         return cars;
     }
 
     @Override
-    public List<Car> count(String i) {
+    public List<Car> ShowSoManyCars(Integer quantity) {
         try {
-           int num = Integer.parseInt(i);
-           return num >= cars.size() ? cars : cars.stream().limit(num).collect(Collectors.toList());
+            int i = quantity;
+           return i >= cars.size() ? cars : cars.stream().limit(i).collect(Collectors.toList());
         } catch (NumberFormatException e) {
-            System.out.println("cd");
+            System.out.println("Введите число");
         }
         return cars;
     }

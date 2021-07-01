@@ -1,13 +1,13 @@
-package web.Services;
+package web.service;
 
 import web.model.Car;
 import java.util.List;
 
 public interface CarService{
 
-    List<Car> index();
+    List<Car> listAllCar();
 
-    List<Car> count(String i);
+    List<Car> ShowSoManyCars(Integer quantity);
 
     void addNewCar(Car car);
 }

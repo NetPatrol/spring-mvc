@@ -13,12 +13,6 @@ public class Car {
         this.vin = vin;
     }
 
-    public Car(String model, String color, String vin) {
-        this.model = model;
-        this.color = color;
-        this.vin = vin;
-    }
-
     public Car() {
 
     }

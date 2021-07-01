@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import web.Services.CarService;
+import web.service.CarService;
 import web.model.Car;
 
 @Controller
@@ -18,12 +18,12 @@ public class CarController {
     }
 
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
-    public String viewCars(@RequestParam(value = "count", required = false) String i, Model model) {
-        if (i != null) {
-            model.addAttribute("cars", service.count(i));
-        } else {
-            model.addAttribute("cars", service.index());
-        }
+    public String viewCars(@RequestParam(value = "quantity", required = false) Integer quantity, Model model) {
+            if (quantity != null) {
+                model.addAttribute("cars", service.ShowSoManyCars(quantity));
+            } else {
+                model.addAttribute("cars", service.listAllCar());
+            }
         return "cars/cars";
     }
 
