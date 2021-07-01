@@ -7,7 +7,7 @@ public interface CarDao {
 
     List<Car> listAllCar();
 
-    List<Car> ShowSoManyCars(Integer quantity);
+    List<Car> listSoManyCars(Integer quantity);
 
     void addNewCar(Car car);
 }
