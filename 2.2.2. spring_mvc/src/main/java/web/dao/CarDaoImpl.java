@@ -29,7 +29,7 @@ public class CarDaoImpl implements CarDao {
     }
 
     @Override
-    public List<Car> listSoManyCars(Integer quantity) {
+    public List<Car> listCountCars(Integer quantity) {
         try {
             int i = quantity;
            return i >= cars.size() ? cars : cars.stream().limit(i).collect(Collectors.toList());

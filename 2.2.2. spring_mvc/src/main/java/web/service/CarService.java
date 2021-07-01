@@ -7,7 +7,7 @@ public interface CarService{
 
     List<Car> listAllCar();
 
-    List<Car> listSoManyCars(Integer quantity);
+    List<Car> listCountCars(Integer quantity);
 
     void addNewCar(Car car);
 }

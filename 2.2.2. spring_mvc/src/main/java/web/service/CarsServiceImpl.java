@@ -21,8 +21,8 @@ public class CarsServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> listSoManyCars(Integer quantity) {
-        return carDao.listSoManyCars(quantity);
+    public List<Car> listCountCars(Integer quantity) {
+        return carDao.listCountCars(quantity);
     }
     @Override
     public void addNewCar(Car car) {

@@ -20,7 +20,7 @@ public class CarController {
     @RequestMapping(value = "/cars", method = RequestMethod.GET)
     public String viewCars(@RequestParam(value = "quantity", required = false) Integer quantity, Model model) {
             if (quantity != null) {
-                model.addAttribute("cars", service.listSoManyCars(quantity));
+                model.addAttribute("cars", service.listCountCars(quantity));
             } else {
                 model.addAttribute("cars", service.listAllCar());
             }
